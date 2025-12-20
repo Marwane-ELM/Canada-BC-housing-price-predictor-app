@@ -1,0 +1,15 @@
+venv/
+
+__pycache__/
+*.py[cod]
+*.pyo
+
+.ipynb_checkpoints/
+
+data/
+*.csv
+*.json
+*.zip
+
+logs/
+*.log
