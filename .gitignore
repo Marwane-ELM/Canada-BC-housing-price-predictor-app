@@ -6,7 +6,6 @@ __pycache__/
 
 .ipynb_checkpoints/
 
-data/
 *.csv
 *.json
 *.zip
