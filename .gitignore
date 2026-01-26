@@ -5,6 +5,11 @@ __pycache__/
 *.pyo
 
 .ipynb_checkpoints/
+artifacts/*
+!artifacts/rdf_best_model.pkl
+!artifacts/gdb_final_model1.pkl
+!artifacts/gdb_final_model2.pkl
+
 
 *.csv
 *.json
