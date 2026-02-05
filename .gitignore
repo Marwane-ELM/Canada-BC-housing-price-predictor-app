@@ -11,6 +11,9 @@ artifacts/*
 !artifacts/gdb_final_model2.pkl
 !artifacts/gdb_mape_dict.pkl
 
+app/*.jpg
+app/*.png
+
 *.csv
 *.json
 *.zip
