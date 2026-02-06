@@ -7,12 +7,10 @@ __pycache__/
 .ipynb_checkpoints/
 artifacts/*
 !artifacts/rdf_best_model.pkl
-!artifacts/gdb_final_model1.pkl
-!artifacts/gdb_final_model2.pkl
+!artifacts/gdb_final_model.pkl
+!artifatcs/ada_best_model.pkl
 !artifacts/gdb_mape_dict.pkl
 
-app/*.jpg
-app/*.png
 
 *.csv
 *.json

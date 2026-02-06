@@ -14,7 +14,19 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 banner = get_base64_image("sunny.jpg")
-        
+logo = get_base64_image("estimlogo.png")
+
+st.markdown(
+    f"""
+    <div style="text-align: center; padding: 20px;">
+        <a href="?" style="text-decoration: none;">
+            <img src="data:image/png;base64,{logo}" alt="Logo" style="width: 200px; cursor: pointer;">
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown(
     f"""
     <style>
@@ -451,7 +463,7 @@ if get_pred:
 
         
 
-        model = load("../artifacts/gdb_final_model2.pkl")
+        model = load("../artifacts/gdb_final_model.pkl")
         price = model.predict(X_pred)
         price = np.expm1(price)[0]
         price_ranges = load("../artifacts/gdb_mape_dict.pkl")
