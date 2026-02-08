@@ -9,6 +9,62 @@ from geopy.geocoders import Nominatim
 
 #########################################################################################################
 st.set_page_config(layout="wide", page_icon="🍁", page_title="EstimAI : Property Price Estimator in British Columbia - Canada")
+st.markdown(
+    """
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <style>
+        /* Background général */
+        html, body, [data-testid="stApp"] {
+            background-color: #0e1117;
+            color: #e6e6e6;
+        }
+
+        /* Conteneur principal */
+        .block-container {
+            background-color: ##131C3E;
+        }
+
+        /* Titres */
+        h1, h2, h3, h4 {
+            color: #ffffff;
+        }
+
+        /* Texte standard */
+        p, span, label {
+            color: #e6e6e6;
+        }
+
+        /* Inputs */
+        input, textarea, select {
+            background-color: #1c1f26 ;
+            color: #ffffff;
+        }
+
+        /* Widgets Streamlit */
+        .stButton > button {
+            background-color: #2a2e39;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .stButton > button:hover {
+            background-color: #3b4050;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -22,7 +78,7 @@ logo = get_base64_image("estimlogo.png")
 
 st.markdown(
     f"""
-    <div style="text-align: center; padding: 20px;">
+    <div style="text-align: center; padding: 30px;">
         <a href="?" style="text-decoration: none;">
             <img src="data:image/png;base64,{logo}" alt="Logo" style="width: 200px; cursor: pointer;">
         </a>
@@ -61,21 +117,65 @@ st.markdown(
         bottom: 240px;
         left: 30px;
         color: white;
-        font-family : 'Playfair Display', 'Serif';
+        font-family: 'Playfair Display', 'Serif';
         font-size: 80px;
         font-weight: 500;
         text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
         z-index: 2;
+        line-height: 1.1;
     }}
 
     .header-subtitle {{
         position: absolute;
         bottom: 190px;
         left: 40px;
-        font-family : 'Sans-Serif';
+        font-family: 'Sans-Serif';
         color: #f0f0f0;
         font-size: 18px;
         z-index: 2;
+        line-height: 1.5;
+    }}
+
+    /* Responsive pour mobile */
+    @media (max-width: 768px) {{
+        .header {{
+            height: 400px;
+        }}
+        
+        .header-title {{
+            font-size: 48px;
+            bottom: 160px;
+            left: 20px;
+            right: 20px;
+        }}
+        
+        .header-subtitle {{
+            font-size: 14px;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+        }}
+    }}
+
+    /* Responsive pour très petits écrans */
+    @media (max-width: 480px) {{
+        .header {{
+            height: 350px;
+        }}
+        
+        .header-title {{
+            font-size: 36px;
+            bottom: 140px;
+            left: 15px;
+            right: 15px;
+        }}
+        
+        .header-subtitle {{
+            font-size: 13px;
+            bottom: 60px;
+            left: 15px;
+            right: 15px;
+        }}
     }}
     </style>
 
@@ -83,7 +183,7 @@ st.markdown(
         <div class="header-overlay"></div>
         <div class="header-title">EstimAI</div>
         <div class="header-subtitle">
-            Estimate your property’s market value in British Columbia<br/>
+            Estimate your property's market value in British Columbia<br/>
             using AI models trained on BC real estate data.
         </div>
     </div>
