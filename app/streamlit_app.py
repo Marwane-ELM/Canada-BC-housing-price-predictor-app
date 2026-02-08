@@ -23,6 +23,17 @@ st.markdown(
 st.markdown(
     """
     <style>
+        header[data-testid="stHeader"] {
+            display: none;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <style>
         /* Background général */
         html, body, [data-testid="stApp"] {
             background-color: #0e1117;
@@ -127,7 +138,7 @@ st.markdown(
 
     .header-subtitle {{
         position: absolute;
-        bottom: 190px;
+        bottom: 160px;
         left: 40px;
         font-family: 'Sans-Serif';
         color: #f0f0f0;
@@ -144,14 +155,14 @@ st.markdown(
         
         .header-title {{
             font-size: 48px;
-            bottom: 160px;
+            bottom: 180px;
             left: 20px;
             right: 20px;
         }}
         
         .header-subtitle {{
             font-size: 14px;
-            bottom: 80px;
+            bottom: 120px;
             left: 20px;
             right: 20px;
         }}
