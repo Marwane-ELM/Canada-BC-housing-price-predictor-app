@@ -9,22 +9,29 @@ from geopy.geocoders import Nominatim
 
 #########################################################################################################
 st.set_page_config(layout="wide", page_icon="🍁", page_title="EstimAI : Property Price Estimator in British Columbia - Canada")
-st.markdown(
-    """
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 st.markdown(
     """
     <style>
+        /* Réduction du padding top du conteneur principal */
+        .block-container {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem;
+        }
+        
+        /* Suppression de l'espace au-dessus du premier élément */
+        .element-container:first-child {
+            margin-top: -1rem;
+        }
+        
+        /* Cache le header Streamlit */
         header[data-testid="stHeader"] {
             display: none;
+        }
+        
+        /* Ajustement de l'espacement principal */
+        [data-testid="stAppViewContainer"] > .main {
+            padding-top: 0rem;
         }
     </style>
     """,
@@ -57,7 +64,7 @@ st.markdown(
 
         /* Inputs */
         input, textarea, select {
-            background-color: #1c1f26 ;
+            background-color: #1c1f26;
             color: #ffffff;
         }
 
@@ -87,14 +94,16 @@ def get_base64_image(path):
 banner = get_base64_image("sunny.jpg")
 logo = get_base64_image("estimlogo.png")
 
+# Logo avec padding réduit
 st.markdown(
     f"""
-    <div style="text-align: center; padding: 30px;">
+    <div style="text-align: center; padding: 10px 0;">
         <img src="data:image/png;base64,{logo}" alt="Logo" style="width: 200px; cursor: pointer;">
     </div>
     """,
     unsafe_allow_html=True
 )
+
 st.markdown(
     f"""
     <style>
@@ -108,6 +117,7 @@ st.markdown(
         border-radius: 12px;
         box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.35);
         margin-bottom: 30px;
+        margin-top: 10px;
     }}
 
     .header-overlay {{
@@ -198,7 +208,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 
 
