@@ -155,14 +155,14 @@ st.markdown(
         
         .header-title {{
             font-size: 48px;
-            bottom: 180px;
+            bottom: 160px;
             left: 20px;
             right: 20px;
         }}
         
         .header-subtitle {{
             font-size: 14px;
-            bottom: 120px;
+            bottom: 100px;
             left: 20px;
             right: 20px;
         }}
@@ -171,7 +171,7 @@ st.markdown(
     /* Responsive pour très petits écrans */
     @media (max-width: 480px) {{
         .header {{
-            height: 350px;
+            height: 310px;
         }}
         
         .header-title {{
