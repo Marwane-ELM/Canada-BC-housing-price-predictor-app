@@ -466,11 +466,11 @@ if get_pred:
                 
 
         
-
-        model = load("../artifacts/gdb_final_model.pkl")
+        ARTIFACTS_DIR = BASE_DIR / "artifacts"
+        model = load(ARTIFACTS_DIR / "gdb_final_model.pkl")
         price = model.predict(X_pred)
         price = np.expm1(price)[0]
-        price_ranges = load("../artifacts/gdb_mape_dict.pkl")
+        price_ranges = load(ARTIFACTS_DIR / "gdb_mape_dict.pkl")
 
         for interval, percentage in price_ranges.items():
             min_interv, max_interv = interval
