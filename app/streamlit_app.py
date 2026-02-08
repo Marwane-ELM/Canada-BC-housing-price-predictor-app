@@ -49,35 +49,15 @@ st.markdown(
 
         /* Conteneur principal */
         .block-container {
-            background-color: ##131C3E;
+            background-color: #0E111C;
         }
 
         /* Titres */
         h1, h2, h3, h4 {
             color: #ffffff;
         }
+        
 
-        /* Texte standard */
-        p, span, label {
-            color: #e6e6e6;
-        }
-
-        /* Inputs */
-        input, textarea, select {
-            background-color: #1c1f26;
-            color: #ffffff;
-        }
-
-        /* Widgets Streamlit */
-        .stButton > button {
-            background-color: #2a2e39;
-            color: white;
-            border-radius: 8px;
-        }
-
-        .stButton > button:hover {
-            background-color: #3b4050;
-        }
     </style>
     """,
     unsafe_allow_html=True
@@ -471,230 +451,239 @@ else :
 
 #################### Prediction Button #####################
 
-st.space("medium")
-left, mid, right = st.columns(3)
-with mid:
-    get_pred = st.button("**Get a Price estimate !**", icon=":material/sell:", type="primary", width=300)
+result_placeholder = st.empty()
 
+st.space("medium")
+_, _, mid, _, _ = st.columns(5)
+with mid:
+    get_pred = st.button("**Get a Price estimate ↓**", icon=":material/sell:", type="primary", width=300)
+
+st.space("xsmall")
 
 st.session_state.unfilled = []
 
 if get_pred:
+    with result_placeholder.container(): 
+        if (not address) & ("Location" not in st.session_state.unfilled):
+            st.session_state.unfilled.append("Location")
     
-    if (not address) & ("Location" not in st.session_state.unfilled):
-        st.session_state.unfilled.append("Location")
-
-    if (st.session_state.property_type == None) & ("Property type" not in st.session_state.unfilled):
-        st.session_state.unfilled.append("Property type")
-        
-    if (answer4 == "Yes") & (len(heating_distrib) == 0) & ("Heating Distribution System" not in st.session_state.unfilled):
-        st.session_state.unfilled.append("Heating Distribution System")
-
-    if (answer5 == "Yes") & (len(energy_types) == 0) & ("Energy source" not in st.session_state.unfilled):
-        st.session_state.unfilled.append("Energy source")
-
-    
-    if len(st.session_state.unfilled) > 0:
-        # display the unfilled fields
-        st.warning(
-            "Please complete the following fields : \n" + "\n".join([f"- {unfilled}" for  unfilled in st.session_state.unfilled])
-        )
-    
-    else : 
-
-        ####################### Filling the Dataframe X_pred with all the user's infos ########################
-        ### The user's features that we'll give to our trained model to get a price prediction
-        X_pred = pd.DataFrame()
-        
-        dict_features = {
-            'latitude' : st.session_state.latitude, 
-            'longitude': st.session_state.longitude,      
-            'property-beds' : nb_beds,
-            'property-baths' : nb_baths,
-            'Acreage' : acreage,
-            'Property Tax' : property_tax,
-            'Square Footage' : square_footage,
-            'Missing Acreage' : missing_acreage,
-            'Missing Property Tax' : missing_property_tax,
-            'Missing Parking' : missing_parking,
-            "parking_closed" : parking_closed,
-            "multi_car" : multi_car,
-            "premium_parking" : premium_parking,
-            'has_heating' : has_heating,
-            'missing_energy' : missing_energy,         
-            'missing_distrib' : missing_distrib,
+        if (st.session_state.property_type == None) & ("Property type" not in st.session_state.unfilled):
+            st.session_state.unfilled.append("Property type")
             
+        if (answer4 == "Yes") & (len(heating_distrib) == 0) & ("Heating Distribution System" not in st.session_state.unfilled):
+            st.session_state.unfilled.append("Heating Distribution System")
+    
+        if (answer5 == "Yes") & (len(energy_types) == 0) & ("Energy source" not in st.session_state.unfilled):
+            st.session_state.unfilled.append("Energy source")
+    
+        
+        if len(st.session_state.unfilled) > 0:
+            # display the unfilled fields
+            st.space("small")
+            st.warning(
+                "Please complete the following fields : \n" + "\n".join([f"- {unfilled}" for  unfilled in st.session_state.unfilled])
+            )
+        
+        else :  
+    
+            ####################### Filling the Dataframe X_pred with all the user's infos ########################
+            ### The user's features that we'll give to our trained model to get a price prediction
+            X_pred = pd.DataFrame()
             
-        }
-
-        properties_dict = {
-            'Condo':'Property Type_Condo',
-            'Condo/Townhome' : 'Property Type_Condo/Townhome',
-            'Duplex' : 'Property Type_Duplex',
-            'Manufactured House' : 'Property Type_Manufactured Home',
-            'Multi Family' : 'Property Type_MultiFamily',
-            'Single Family' : 'Property Type_Single Family',
-            'Townhome' : 'Property Type_Townhome'
-        }
-
-        distrib_dict = {
-            "Baseboard" : "baseboard", 
-            "Forced Air" : "forced_air", 
-            "Radiant" : "radiant", 
-            "Hydronic" : "hydronic", 
-            "Heat Pump" : "heat_pump", 
-            "Overhead" : "overhead", 
-            "Space heater" : "space_heater"
-        }
-
-        energy_dict = {
-            "Electric" : "electric", 
-            "Geothermal" : "geothermal",
-            "Natural Gas" : "natural_gas", 
-            "Oil" : "oil", 
-            "Propane" : "propane", 
-            "Biomass" : "biomass", 
-            "Solar" : "solar"
-        }
-
-        #### This order counts ####
-
-        for key, val in dict_features.items():
-            X_pred[key] = [val]
-
-        
-        # Initialization for energy_type
-        for key, val in energy_dict.items():
-            X_pred[val] = [0]
-            if key in energy_types:
-                X_pred[val] = [1]
-
-        # Initialization for distrib_type
-        for key, val in distrib_dict.items():
-            X_pred[val] = [0]
-            if key in heating_distrib:
-                X_pred[val] = [1]
+            dict_features = {
+                'latitude' : st.session_state.latitude, 
+                'longitude': st.session_state.longitude,      
+                'property-beds' : nb_beds,
+                'property-baths' : nb_baths,
+                'Acreage' : acreage,
+                'Property Tax' : property_tax,
+                'Square Footage' : square_footage,
+                'Missing Acreage' : missing_acreage,
+                'Missing Property Tax' : missing_property_tax,
+                'Missing Parking' : missing_parking,
+                "parking_closed" : parking_closed,
+                "multi_car" : multi_car,
+                "premium_parking" : premium_parking,
+                'has_heating' : has_heating,
+                'missing_energy' : missing_energy,         
+                'missing_distrib' : missing_distrib,
                 
-        # Initialization for property_type
-        for key, val in properties_dict.items():
-            X_pred[val] = [0]
-            if key == st.session_state.property_type:
-                X_pred[val] = [1]
                 
-
-        BASE_DIR_MODEL = Path(__file__).resolve().parent.parent
-
-        ARTIFACTS_DIR = BASE_DIR_MODEL / "artifacts"
-        model = load(ARTIFACTS_DIR / "gdb_final_model.pkl")
-        price = model.predict(X_pred)
-        price = np.expm1(price)[0]
-        price_ranges = load(ARTIFACTS_DIR / "gdb_mape_dict.pkl")
-
-        for interval, percentage in price_ranges.items():
-            min_interv, max_interv = interval
-            if (min_interv < price) & (price < max_interv):
-                st.session_state.min_price = price * (1 - percentage)
-                st.session_state.max_price = price * (1 + percentage)
-                
-
-        
-        st.session_state.pred_price = price
-        
-        
-        if "pred_price" in st.session_state:
-            price = st.session_state.pred_price
-
-            if ("min_price" in st.session_state) & ("max_price" in st.session_state):
-                min_price = st.session_state.min_price
-                max_price = st.session_state.max_price
-
-                st.markdown(f"""
-                    <div class="price-card">
-                        <div class="price-title">Estimated Property Value</div>
-                        <div class="price-value">${price:,.0f}</div>
-                        <div class="range-container">
-                            <div class="range-box">
-                                <div class="range-label">Low estimate</div>
-                                <div class="range-value">${min_price:,.0f}</div>
+            }
+    
+            properties_dict = {
+                'Condo':'Property Type_Condo',
+                'Condo/Townhome' : 'Property Type_Condo/Townhome',
+                'Duplex' : 'Property Type_Duplex',
+                'Manufactured House' : 'Property Type_Manufactured Home',
+                'Multi Family' : 'Property Type_MultiFamily',
+                'Single Family' : 'Property Type_Single Family',
+                'Townhome' : 'Property Type_Townhome'
+            }
+    
+            distrib_dict = {
+                "Baseboard" : "baseboard", 
+                "Forced Air" : "forced_air", 
+                "Radiant" : "radiant", 
+                "Hydronic" : "hydronic", 
+                "Heat Pump" : "heat_pump", 
+                "Overhead" : "overhead", 
+                "Space heater" : "space_heater"
+            }
+    
+            energy_dict = {
+                "Electric" : "electric", 
+                "Geothermal" : "geothermal",
+                "Natural Gas" : "natural_gas", 
+                "Oil" : "oil", 
+                "Propane" : "propane", 
+                "Biomass" : "biomass", 
+                "Solar" : "solar"
+            }
+    
+            #### This order counts ####
+    
+            for key, val in dict_features.items():
+                X_pred[key] = [val]
+    
+            
+            # Initialization for energy_type
+            for key, val in energy_dict.items():
+                X_pred[val] = [0]
+                if key in energy_types:
+                    X_pred[val] = [1]
+    
+            # Initialization for distrib_type
+            for key, val in distrib_dict.items():
+                X_pred[val] = [0]
+                if key in heating_distrib:
+                    X_pred[val] = [1]
+                    
+            # Initialization for property_type
+            for key, val in properties_dict.items():
+                X_pred[val] = [0]
+                if key == st.session_state.property_type:
+                    X_pred[val] = [1]
+                    
+    
+            BASE_DIR_MODEL = Path(__file__).resolve().parent.parent
+    
+            ARTIFACTS_DIR = BASE_DIR_MODEL / "artifacts"
+            model = load(ARTIFACTS_DIR / "gdb_final_model.pkl")
+            price = model.predict(X_pred)
+            price = np.expm1(price)[0]
+            price_ranges = load(ARTIFACTS_DIR / "gdb_mape_dict.pkl")
+    
+            for interval, percentage in price_ranges.items():
+                min_interv, max_interv = interval
+                if (min_interv < price) & (price < max_interv):
+                    st.session_state.min_price = price * (1 - percentage)
+                    st.session_state.max_price = price * (1 + percentage)
+                    
+    
+            
+            st.session_state.pred_price = price
+            
+            if "pred_price" in st.session_state:
+                price = st.session_state.pred_price
+    
+                if ("min_price" in st.session_state) & ("max_price" in st.session_state):
+                    min_price = st.session_state.min_price
+                    max_price = st.session_state.max_price
+    
+                    st.markdown(f"""
+                        <div class="price-card">
+                            <div class="price-title">Estimated Property Value</div>
+                            <div class="price-value">${price:,.0f}</div>
+                            <div class="range-container">
+                                <div class="range-box">
+                                    <div class="range-label">Low estimate</div>
+                                    <div class="range-value">${min_price:,.0f}</div>
+                                </div>
+                                <div class="range-box">
+                                    <div class="range-label">High estimate</div>
+                                    <div class="range-value">${max_price:,.0f}</div>
+                                </div>
                             </div>
-                            <div class="range-box">
-                                <div class="range-label">High estimate</div>
-                                <div class="range-value">${max_price:,.0f}</div>
+                            <div class="price-sub">
+    This estimate is generated by an AI model using historical
+    sales data. </br>
+    It is provided for informational purposes only. It is not a professional appraisal and actual prices may vary.
                             </div>
                         </div>
-                        <div class="price-sub">
-This estimate is generated by an AI model using historical
-sales data. It is provided for informational purposes only. It is not a professional appraisal and actual prices may vary.
+                        """, unsafe_allow_html=True)
+                    
+                    
+                else : 
+                    st.markdown(f"""
+                        <div class="price-card">
+                            <div class="price-title">Estimated Property Value</div>
+                            <div class="price-value">${price:,.0f}</div>
+                            <div class="price-sub">
+                                Based on British Columbia market trends
+                            </div>
                         </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        """, unsafe_allow_html=True)
+    
+    
+                    
+            st.markdown("""
+                <style>
+                .price-card {
+                    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+                    border-radius: 16px;
+                    padding: 40px;
+                    text-align: center;
+                    color: white;
+                    box-shadow: 0px 15px 40px rgba(0,0,0,0.35);
+                    margin-top: 40px;
+                }
                 
-            else : 
-                st.markdown(f"""
-                    <div class="price-card">
-                        <div class="price-title">Estimated Property Value</div>
-                        <div class="price-value">${price:,.0f}</div>
-                        <div class="price-sub">
-                            Based on British Columbia market trends
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                .price-title {
+                    font-size: 22px;
+                    font-weight: 500;
+                    opacity: 0.85;
+                }
                 
+                .price-value {
+                    font-size: 56px;
+                    font-weight: 800;
+                    margin: 12px 0 20px 0;
+                    letter-spacing: 1px;
+                }
+                
+                .range-container {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                }
+                
+                .range-box {
+                    width: 45%;
+                    background: rgba(255,255,255,0.12);
+                    border-radius: 12px;
+                    padding: 14px;
+                }
+                
+                .range-label {
+                    font-size: 13px;
+                    opacity: 0.75;
+                }
+                
+                .range-value {
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-top: 4px;
+                }
+                
+                .price-sub {
+                    font-size: 15px;
+                    opacity: 0.75;
+                    margin-top: 20px;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+                
+        
 
-            
-        st.markdown("""
-            <style>
-            .price-card {
-                background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-                border-radius: 16px;
-                padding: 40px;
-                text-align: center;
-                color: white;
-                box-shadow: 0px 15px 40px rgba(0,0,0,0.35);
-                margin-top: 40px;
-            }
-            
-            .price-title {
-                font-size: 22px;
-                font-weight: 500;
-                opacity: 0.85;
-            }
-            
-            .price-value {
-                font-size: 56px;
-                font-weight: 800;
-                margin: 12px 0 20px 0;
-                letter-spacing: 1px;
-            }
-            
-            .range-container {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 10px;
-            }
-            
-            .range-box {
-                width: 45%;
-                background: rgba(255,255,255,0.12);
-                border-radius: 12px;
-                padding: 14px;
-            }
-            
-            .range-label {
-                font-size: 13px;
-                opacity: 0.75;
-            }
-            
-            .range-value {
-                font-size: 20px;
-                font-weight: 600;
-                margin-top: 4px;
-            }
-            
-            .price-sub {
-                font-size: 15px;
-                opacity: 0.75;
-                margin-top: 20px;
-            }
-            </style>
-            """, unsafe_allow_html=True)
+    
