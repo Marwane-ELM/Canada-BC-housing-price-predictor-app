@@ -90,14 +90,11 @@ logo = get_base64_image("estimlogo.png")
 st.markdown(
     f"""
     <div style="text-align: center; padding: 30px;">
-        <a href="?" style="text-decoration: none;">
-            <img src="data:image/png;base64,{logo}" alt="Logo" style="width: 200px; cursor: pointer;">
-        </a>
+        <img src="data:image/png;base64,{logo}" alt="Logo" style="width: 200px; cursor: pointer;">
     </div>
     """,
     unsafe_allow_html=True
 )
-
 st.markdown(
     f"""
     <style>
