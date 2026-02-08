@@ -465,8 +465,9 @@ if get_pred:
                 X_pred[val] = [1]
                 
 
-        
-        ARTIFACTS_DIR = BASE_DIR / "artifacts"
+        BASE_DIR_MODEL = Path(__file__).resolve().parent.parent
+
+        ARTIFACTS_DIR = BASE_DIR_MODEL / "artifacts"
         model = load(ARTIFACTS_DIR / "gdb_final_model.pkl")
         price = model.predict(X_pred)
         price = np.expm1(price)[0]
