@@ -176,7 +176,7 @@ st.markdown(
         
         .header-title {{
             font-size: 36px;
-            bottom: 140px;
+            bottom: 160px;
             left: 15px;
             right: 15px;
         }}
