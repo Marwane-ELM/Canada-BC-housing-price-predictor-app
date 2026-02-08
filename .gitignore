@@ -11,6 +11,7 @@ artifacts/*
 !artifatcs/ada_best_model.pkl
 !artifacts/gdb_mape_dict.pkl
 
+.devcontainer/
 
 *.csv
 *.json
