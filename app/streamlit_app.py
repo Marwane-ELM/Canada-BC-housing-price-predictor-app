@@ -183,7 +183,7 @@ st.markdown(
         
         .header-subtitle {{
             font-size: 13px;
-            bottom: 60px;
+            bottom: 120px;
             left: 15px;
             right: 15px;
         }}
