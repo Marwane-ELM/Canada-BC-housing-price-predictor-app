@@ -3,13 +3,17 @@ import numpy as np
 import pandas as pd
 import base64
 from joblib import load
+from pathlib import Path
 from geopy.geocoders import Nominatim
 
 
 #########################################################################################################
 st.set_page_config(layout="wide", page_icon="🍁", page_title="EstimAI : Property Price Estimator in British Columbia - Canada")
 
-def get_base64_image(image_path):
+BASE_DIR = Path(__file__).resolve().parent
+
+def get_base64_image(path):
+    image_path = BASE_DIR / path
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
