@@ -697,7 +697,7 @@ if get_pred:
                 }
                 
                 .price-value {
-                    font-size: 56px;
+                    font-size: 45px;
                     font-weight: 800;
                     margin: 12px 0 20px 0;
                     letter-spacing: 1px;
