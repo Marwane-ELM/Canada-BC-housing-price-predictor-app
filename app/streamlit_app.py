@@ -14,23 +14,19 @@ st.set_page_config(layout="wide", page_icon="🍁", page_title="EstimAI : Proper
 st.markdown(
     """
     <style>
-        /* Réduction du padding top du conteneur principal */
         .block-container {
             padding-top: 0rem !important;
             padding-bottom: 0rem;
         }
         
-        /* Suppression de l'espace au-dessus du premier élément */
         .element-container:first-child {
             margin-top: -1rem;
         }
         
-        /* Cache le header Streamlit */
         header[data-testid="stHeader"] {
             display: none;
         }
         
-        /* Ajustement de l'espacement principal */
         [data-testid="stAppViewContainer"] > .main {
             padding-top: 0rem;
         }
@@ -42,18 +38,15 @@ st.markdown(
 st.markdown(
     """
     <style>
-        /* Background général */
         html, body, [data-testid="stApp"] {
             background-color: #0e1117;
             color: #e6e6e6;
         }
 
-        /* Conteneur principal */
         .block-container {
             background-color: #0E111C;
         }
 
-        /* Titres */
         h1, h2, h3, h4 {
             color: #ffffff;
         }
@@ -134,7 +127,6 @@ st.markdown(
         line-height: 1.5;
     }}
 
-    /* Responsive pour mobile */
     @media (max-width: 768px) {{
         .header {{
             height: 400px;
@@ -155,7 +147,6 @@ st.markdown(
         }}
     }}
 
-    /* Responsive pour très petits écrans */
     @media (max-width: 480px) {{
         .header {{
             height: 310px;
@@ -190,8 +181,6 @@ st.markdown(
 )
 
 
-
-
 #################### Location #####################
 
 
@@ -200,19 +189,20 @@ import requests
 @st.cache_data(ttl=3600)
 def geocode_geoapify(address):
     """
-    Géocode avec Geoapify API
-    Retourne (latitude, longitude, country, province) ou (None, None, None, None) si erreur
+    Geocoding with Geoapify API
+    It returns (latitude, longitude, country, province) or (None, None, None, None) if an error occured
     """
+    
     api_key = st.secrets.get("GEOAPIFY_API_KEY", "")
     
     if not api_key:
-        st.error("⚠️ Geoapify API key not configured. Please add it to Streamlit secrets.")
+        st.error("Geoapify API key not configured") # Test if the api key is configured
         return None, None, None, None
     
     url = "https://api.geoapify.com/v1/geocode/search"
     params = {
         "text": address,
-        "filter": "countrycode:ca",  # Limite au Canada
+        "filter": "countrycode:ca",  # Restriction area to Canada
         "apiKey": api_key,
         "limit": 1
     }
@@ -227,7 +217,6 @@ def geocode_geoapify(address):
             coords = feature["geometry"]["coordinates"]
             props = feature["properties"]
             
-            # Extraire les informations
             latitude = coords[1]
             longitude = coords[0]
             country = props.get("country", "")
@@ -287,7 +276,6 @@ if search:
                 st.error("Address not found. Please enter a valid address.")
                 st.session_state.address_valid = False
             else:
-                # Vérification du pays et de la province
                 if not country or not province:
                     st.error("Incomplete address. Please enter a full address in British Columbia.")
                     st.session_state.address_valid = False
