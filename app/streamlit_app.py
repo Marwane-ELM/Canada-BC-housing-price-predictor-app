@@ -228,7 +228,7 @@ if search:
         st.session_state.address_valid = False
 
     else : 
-        geolocator = Nominatim(user_agent="streamlit_app")
+        geolocator = Nominatim(user_agent=" pro.marwane.elm@gmail.com")
         location = geolocator.geocode(address, addressdetails=True, exactly_one=True)
         
 
