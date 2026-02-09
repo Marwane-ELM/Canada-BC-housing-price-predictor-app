@@ -5,6 +5,7 @@ import base64
 from joblib import load
 from pathlib import Path
 from geopy.geocoders import Nominatim
+import requests
 
 
 #########################################################################################################
@@ -74,7 +75,6 @@ def get_base64_image(path):
 banner = get_base64_image("sunny.jpg")
 logo = get_base64_image("estimlogo.png")
 
-# Logo avec padding réduit
 st.markdown(
     f"""
     <div style="text-align: center; padding: 10px 0;">
@@ -195,16 +195,68 @@ st.markdown(
 #################### Location #####################
 
 
+import requests
+
+@st.cache_data(ttl=3600)
+def geocode_geoapify(address):
+    """
+    Géocode avec Geoapify API
+    Retourne (latitude, longitude, country, province) ou (None, None, None, None) si erreur
+    """
+    api_key = st.secrets.get("GEOAPIFY_API_KEY", "")
+    
+    if not api_key:
+        st.error("⚠️ Geoapify API key not configured. Please add it to Streamlit secrets.")
+        return None, None, None, None
+    
+    url = "https://api.geoapify.com/v1/geocode/search"
+    params = {
+        "text": address,
+        "filter": "countrycode:ca",  # Limite au Canada
+        "apiKey": api_key,
+        "limit": 1
+    }
+    
+    try:
+        response = requests.get(url, params=params, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        
+        if data.get("features") and len(data["features"]) > 0:
+            feature = data["features"][0]
+            coords = feature["geometry"]["coordinates"]
+            props = feature["properties"]
+            
+            # Extraire les informations
+            latitude = coords[1]
+            longitude = coords[0]
+            country = props.get("country", "")
+            province = props.get("state", "")
+            
+            return latitude, longitude, country, province
+        
+        return None, None, None, None
+        
+    except requests.exceptions.Timeout:
+        st.error("⏱️ Request timeout. Please try again.")
+        return None, None, None, None
+    except requests.exceptions.RequestException as e:
+        st.error(f"🌐 Connection error. Please check your internet connection.")
+        return None, None, None, None
+    except Exception as e:
+        st.error(f"❌ Unexpected error: {str(e)}")
+        return None, None, None, None
+
+
 st.title("📍Location")
 
 
-col1, col2  = st.columns([0.70, 0.30], vertical_alignment="bottom")
+col1, col2 = st.columns([0.70, 0.30], vertical_alignment="bottom")
 
-with col1 : 
-    address = st.text_input("Enter your address : ", placeholder="Type your address here",
-)
+with col1: 
+    address = st.text_input("Enter your address : ", placeholder="Type your address here")
 
-with col2 : 
+with col2: 
     search = st.button("Search", icon=":material/search:")
 
 
@@ -223,41 +275,40 @@ if search:
     st.session_state.address_valid = False
     st.session_state.longitude = None
     st.session_state.latitude = None
-    if not address : 
-        st.warning("Please enter an adress.")
+    
+    if not address: 
+        st.warning("Please enter an address.")
         st.session_state.address_valid = False
-
-    else : 
-        geolocator = Nominatim(user_agent="streamlit_app", timeout=5)
-        location = geolocator.geocode(address, addressdetails=True, exactly_one=True)
-        
-
-        if location is None:
-            st.error("Address not found. Please enter a valid address.")
-            st.session_state.address_valid = False
-        else :
-            address_details = location.raw.get("address", {})
-            country = address_details.get("country")
-            province = address_details.get("state")
-
-            if country is None or province is None:
-                st.error("Incomplete address. Please enter a full address in British Columbia.")
-
-            elif country != "Canada" :
-                st.error("The adress is not in Canada.")
-            elif province != "British Columbia" :
-                st.error("The adress is not in British Columbia.")
-            else :
+    else:
+        with st.spinner("🔍 Searching address..."):
+            latitude, longitude, country, province = geocode_geoapify(address)
+            
+            if latitude is None:
+                st.error("Address not found. Please enter a valid address.")
+                st.session_state.address_valid = False
+            else:
+                # Vérification du pays et de la province
+                if not country or not province:
+                    st.error("Incomplete address. Please enter a full address in British Columbia.")
+                    st.session_state.address_valid = False
                 
-                st.session_state.longitude = location.longitude
-                st.session_state.latitude = location.latitude
-                st.session_state.address_valid = True
+                elif country != "Canada":
+                    st.error("The address is not in Canada.")
+                    st.session_state.address_valid = False
+                
+                elif province != "British Columbia":
+                    st.error("The address is not in British Columbia.")
+                    st.session_state.address_valid = False
+                
+                else:
+                    st.session_state.longitude = longitude
+                    st.session_state.latitude = latitude
+                    st.session_state.address_valid = True
 
-if st.session_state.address_valid : 
-    st.success("Your adress has been found ", icon="✅")
-    df_map = pd.DataFrame({"LAT": [st.session_state.latitude], "LON":[st.session_state.longitude]})
+if st.session_state.address_valid: 
+    st.success("Your address has been found", icon="✅")
+    df_map = pd.DataFrame({"LAT": [st.session_state.latitude], "LON": [st.session_state.longitude]})
     st.map(df_map, zoom=5, size=3, color="#EE4B2B")
-
 
 
 #################### Property type #####################
