@@ -61,13 +61,13 @@ The app is fully responsive and optimized for both **desktop** and **mobile** de
 
 | Feature | Description |
 |---|---|
-| 📍 **Geocoding & Validation** | Addresses are geocoded via the Geoapify API. Only addresses in British Columbia, Canada are accepted. |
-| 🗺️ **Interactive Map** | A map pin is displayed on the entered location for visual confirmation. |
-| 🏠 **Comprehensive Property Form** | Users describe property type, square footage, acreage, bedrooms, bathrooms, heating systems, energy sources, parking, and tax information. |
-| 🤖 **ML Price Prediction** | A trained Gradient Boosting model returns an estimated market value. |
-| 📊 **Confidence Range** | A low/high estimate range is provided, based on the model's Mean Absolute Percentage Error (MAPE) per price segment. |
-| 📱 **Mobile Optimized** | Fully responsive UI with CSS media queries for all screen sizes. |
-| ❓ **Graceful Missing Data Handling** | Users can indicate "I don't know" for certain fields — the model handles missingness via dedicated indicator features. |
+|  **Geocoding & Validation** | Addresses are geocoded via the Geoapify API. Only addresses in British Columbia, Canada are accepted. |
+|  **Interactive Map** | A map pin is displayed on the entered location for visual confirmation. |
+|  **Comprehensive Property Form** | Users describe property type, square footage, acreage, bedrooms, bathrooms, heating systems, energy sources, parking, and tax information. |
+|  **ML Price Prediction** | A trained Gradient Boosting model returns an estimated market value. |
+|  **Confidence Range** | A low/high estimate range is provided, based on the model's Mean Absolute Percentage Error (MAPE) per price segment. |
+|  **Mobile Optimized** | Fully responsive UI with CSS media queries for all screen sizes. |
+|  **Graceful Missing Data Handling** | Users can indicate "I don't know" for certain fields — the model handles missingness via dedicated indicator features. |
 
 ---
 
