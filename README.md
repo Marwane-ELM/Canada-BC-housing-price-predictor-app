@@ -1,7 +1,7 @@
 <div align="center">
   <img src="app/estimlogo.png" alt="EstimAI Logo" width="200"/>
 
-  # 🍁 EstimAI — AI-Powered Property Price Estimator
+  # 🍁 [**EstimAI**](https://estimai-british-columbia.streamlit.app/) — AI-Powered Property Price Estimator
 
   **Estimate any property's market value in British Columbia, Canada — powered by Machine Learning.**
 
