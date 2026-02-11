@@ -41,11 +41,8 @@ Anyone curious about property values in British Columbia or anyone exploring the
 
 **👉 [https://estimai-british-columbia.streamlit.app/](https://estimai-british-columbia.streamlit.app/)**
 
-The app is fully responsive and optimized for both **desktop** and **mobile** devices.
-
-<div align="center">
-  <em>Enter an address in British Columbia, fill in property details, and get an instant AI estimate.</em>
-</div>
+The app is fully responsive and optimized for both **desktop** and **mobile** devices.  
+Enter an address in British Columbia, fill in property details, and get an instant AI estimate.
 
 ---
 
