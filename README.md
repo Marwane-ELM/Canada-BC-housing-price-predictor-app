@@ -247,7 +247,9 @@ Then the app will open in your browser.
 > This tool provides **AI-generated estimates for informational purposes only**. It is **not** a professional appraisal. Actual property values may vary significantly based on market conditions, property condition, and other factors not captured in the model. Always consult a licensed real estate professional for accurate property valuations.
 
 ---
-
 <div align="center">
-**Built with ❤️ by Marwane ELM. 🍁**
+  
+**Built with ❤️ by Marwane ELM 🍁**
+
 </div>
+
