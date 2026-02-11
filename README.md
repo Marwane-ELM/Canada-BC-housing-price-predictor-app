@@ -23,7 +23,7 @@ Anyone curious about property values in British Columbia or anyone exploring the
 
 ---
 
-## 📖 Table of Contents
+## 📖 Summary
 
 - [Live Demo](#-live-demo)
 - [Features](#-features)
