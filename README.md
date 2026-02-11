@@ -225,22 +225,23 @@ cd canada-housing-predictor
 ```bash
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
-# venv\Scripts\activate         # Windows
+venv\Scripts\activate         # Windows
 ```
 
+3. Install dependencies
 ```bash
-# 3. Install dependencies
 pip install -r requirements.txt
 ```
+
+4. Set up your API key
 ```bash
-# 4. Set up your API key
 #    Create a file: .streamlit/secrets.toml
 mkdir -p .streamlit
 echo 'GEOAPIFY_API_KEY = "your_api_key_here"' > .streamlit/secrets.toml
 ```
 
+5. Run the app
 ```bash
-# 5. Run the app
 streamlit run app/streamlit_app.py
 ```
 
@@ -250,7 +251,7 @@ Then the app will open in your browser.
 
 ## ⚠️ Disclaimer
 
-> This tool provides **AI-generated estimates for informational purposes only**. It is **not** a professional appraisal. Actual property values may vary significantly based on market conditions, property condition, and other factors not captured in the model. Always consult a licensed real estate professional for accurate property valuations.
+> This tool provides **AI-generated estimates for informational purposes only**. It is **not** a professional appraisal. Actual property values may vary based on market conditions, property condition, and other factors not captured in the model. Always consult a licensed real estate professional for accurate property valuations.
 
 ---
 <div align="center">
