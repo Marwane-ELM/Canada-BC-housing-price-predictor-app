@@ -19,7 +19,7 @@ I've built this project to combine two personal interests: **Artificial Intellig
 
 ### Who Is It For?
 
-Anyone curious about property values in British Columbia or anyone exploring the BC real estate market.
+For anyone curious about property values in British Columbia or anyone exploring the BC real estate market.
 
 ---
 
