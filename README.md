@@ -178,31 +178,25 @@ canada-housing-predictor/
 ├── app/                              # Streamlit web application
 │   ├── streamlit_app.py              # Main app source code
 │   ├── estimlogo.png                 # EstimAI logo
-│   └── sunny.jpg                     # Hero banner image
+│   └── sunny.jpg                     # banner image
 │
 ├── artifacts/                        # Trained models & search results
-│   ├── gdb_final_model.pkl           # ✅ Production model (GradientBoosting)
+│   ├── gdb_final_model.pkl           # Production model (GradientBoosting)
 │   ├── gdb_mape_dict.pkl             # MAPE per price range (for confidence intervals)
-│   ├── gdb_search.pkl / 2 / 3       # Bayesian search results for GradientBoosting
 │   ├── ada_best_model.pkl            # Best AdaBoost model
-│   ├── ada_search.pkl / 2 / 3       # AdaBoost search iterations
-│   ├── rdf_best_model.pkl            # Best Random Forest model
-│   ├── rdf_search.pkl / 2 / 3       # Random Forest search iterations
-│   ├── grid_linear.pkl              # Linear regression grid search
-│   ├── grid_dtree.pkl               # Decision tree grid search
-│   └── grid_trees.pkl               # Tree-based grid search
+│   └──  rdf_best_model.pkl            # Best Random Forest model
 │
 ├── data/                             # Data pipeline
-│   ├── canada/                       # Raw source data
-│   ├── processed/                    # Cleaned & feature-engineered data
+│   ├── canada/                       # Raw source data (Hidden in Github)
+│   ├── processed/                    # Cleaned & feature-engineered data (Hidden in Github)
 │   ├── raw_data_cleaning.ipynb       # Data cleaning notebook
-│   └── data_analysis.ipynb           # EDA & analysis notebook
+│   └── data_analysis.ipynb           # Exploration of the dataset
 │
 ├── notebooks/                        # Model training & experimentation
 │   ├── Linear_reg.ipynb              # Ridge, Lasso, ElasticNet
 │   ├── Random_Forest.ipynb           # Random Forest experiments
 │   ├── AdaBoostRegressor.ipynb       # AdaBoost experiments
-│   ├── GradientBoostRegressor.ipynb  # ✅ Final model training
+│   ├── GradientBoostRegressor.ipynb  # Final model training
 │   └── models_analysis.ipynb         # Cross-model comparison
 │
 ├── requirements.txt                  # Python dependencies
@@ -218,7 +212,7 @@ canada-housing-predictor/
 ### Prerequisites
 
 - Python 3.10+
-- A [Geoapify API key](https://www.geoapify.com/) (free tier available)
+- A [Geoapify API key](https://www.geoapify.com/) (Available for free)
 
 ### Steps
 
@@ -244,7 +238,7 @@ echo 'GEOAPIFY_API_KEY = "your_api_key_here"' > .streamlit/secrets.toml
 streamlit run app/streamlit_app.py
 ```
 
-The app will open in your browser at `http://localhost:8501`.
+Then the app will open in your browser.
 
 ---
 
@@ -255,7 +249,5 @@ The app will open in your browser at `http://localhost:8501`.
 ---
 
 <div align="center">
-
-**Built with ❤️ and 🍁 by Marwane**
-
+**Built with ❤️ by Marwane ELM. 🍁**
 </div>
