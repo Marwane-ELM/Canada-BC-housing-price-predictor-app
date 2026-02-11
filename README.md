@@ -48,20 +48,20 @@ User enters address & property details
                 │
                 ▼
 Geoapify API geocodes the address
-(validates: Canada → British Columbia)
+(only if its in Canada, British Columbia)
                 │
                 ▼
 Features are assembled into a DataFrame
-(one-hot encoding, missing indicators, etc.)
+(one-hot encoding, missing indicators...)
                 │
                 ▼
 GradientBoostingRegressor predicts log(price)
                 │
                 ▼
-exp(prediction) → estimated price in $CAD
+exp(prediction) in order to estimated price in $CAD
                 │
                 ▼
-MAPE for the price range → min/max estimates
+MAPE for the price range for the min/max estimates
                 │
                 ▼
 Results displayed with low/high estimates
