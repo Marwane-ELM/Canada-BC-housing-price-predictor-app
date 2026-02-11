@@ -30,7 +30,7 @@ Anyone curious about property values in British Columbia or anyone exploring the
 - [Machine Learning Pipeline](#-machine-learning-pipeline)
 - [Dataset](#-dataset)
 - [Technologies used](#-technologies-used)
-- [Project Structure](#project-structure)
+- [Project Structure](#-project-structure)
 - [Installation & Local Usage](#-installation--local-usage)
 - [Disclaimer](#-disclaimer)
 
@@ -171,7 +171,7 @@ After cleaning, I ended up with **22,157 rows and 38 columns**. Here's what I di
 ---
 
 
-## 📁 Project Structure
+## 🗂️ Project Structure 
 
 
 ```
