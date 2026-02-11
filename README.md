@@ -170,8 +170,7 @@ After cleaning, I ended up with **22,157 rows and 38 columns**. Here's what I di
 
 ---
 
-
-## 🗂️ Project Structure 
+## Project Structure 
 
 
 ```
