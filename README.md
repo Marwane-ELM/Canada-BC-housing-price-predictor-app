@@ -107,7 +107,7 @@ The idea is simple: without this, the model mostly tries to reduce errors on exp
 ### Final Model Performance
 
 <details>
-<summary><strong>📈 Click to see detailed metrics (Train vs. Test)</strong></summary>
+Here are the detailed metrics (Train set vs. Test set )
 
 | Metric | Test Set | Train Set |
 |--------|----------|-----------|
