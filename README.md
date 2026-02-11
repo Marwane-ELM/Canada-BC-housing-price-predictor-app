@@ -96,16 +96,13 @@ User enters address & property details
 
 I used **BayesianSearchCV** (`scikit-optimize`) for hyperparameter tuning.
 
-
-Hyperparameter tuning was performed using **BayesianSearchCV** (via `scikit-optimize`).
-
 ### Target Transformation
 
 The target variable (`Price`) was **log-transformed** before training:
 
 $$Y = \ln(1 + \text{Price})$$
 
-This ensures the model penalizes relative errors equally across price ranges — a \$50k error on a \$200k property is treated as more significant than the same error on a \$5M property.
+The idea is simple: without this, the model mostly tries to reduce errors on expensive properties (because the absolute errors are bigger). With the log, a 50k$ mistake on a 200k$ house counts more than the same mistake on a 5M$ house. This way the model is fairer across all price ranges.
 
 ### Final Model Performance
 
