@@ -152,7 +152,7 @@ I use these error rates to calculate the min/max price range shown in the app.
 
 ---
 
-## Technologies used
+## </> Technologies used
 
 | Layer | Technology |
 |---|---|
