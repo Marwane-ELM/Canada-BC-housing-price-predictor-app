@@ -131,8 +131,8 @@ The model's accuracy was evaluated across five price segments to ensure fair per
 | \$1,327,400 – \$2,043,133 | 14.7% |
 | \$2,043,133 – \$28,888,000 | 18.7% |
 
-The model is most accurate for mid-range properties.
-I use these error rates to calculate the min/max price range shown in the app.
+The model is most accurate for mid-range properties. I use these error rates to calculate the min/max price range shown in the app.
+
 ---
 
 ## 📄 Dataset
@@ -160,11 +160,11 @@ After cleaning, I ended up with **22,157 rows and 38 columns**. Here's what I di
 | Layer | Technology |
 |---|---|
 | **Language** | Python 3.10+ |
-| **ML Framework** | scikit-learn (GradientBoostingRegressor, BayesianSearchCV) |
+| **ML Framework** | Scikit-Learn (GradientBoostingRegressor, BayesianSearchCV) |
 | **Web App** | Streamlit |
 | **Geocoding API** | Geoapify |
 | **Data Processing** | Pandas, NumPy |
-| **Model Serialization** | Joblib |
+| **Saving objects** | Joblib |
 | **Deployment** | Streamlit Community Cloud |
 | **Notebooks** | Jupyter |
 
