@@ -85,13 +85,17 @@ User enters address & property details
 
 ### Models Explored
 
-| Model | Outcome |
+
+| Model | Result |
 |---|---|
-| Ridge / Lasso / ElasticNet | Underfitting — too simple for this data |
-| K-Nearest Neighbors | Poor generalization |
-| AdaBoost Regressor | Decent but outperformed by Gradient Boosting |
-| Random Forest Regressor | Competitive but higher overfitting risk |
-| **Gradient Boosting + DecisionTree** | **✅ Best balance of accuracy and generalization** |
+| Ridge / Lasso / ElasticNet | Too simple, underfitting |
+| KNN | Didn't generalize well |
+| AdaBoost | OK but not as good as Gradient Boosting |
+| Random Forest | Good but overfitted more |
+| **Gradient Boosting + DecisionTree** | **Best trade-off between performance and overfitting** |
+
+I used **BayesianSearchCV** (`scikit-optimize`) for hyperparameter tuning.
+
 
 Hyperparameter tuning was performed using **BayesianSearchCV** (via `scikit-optimize`).
 
