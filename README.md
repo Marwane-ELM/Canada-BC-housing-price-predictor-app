@@ -216,14 +216,13 @@ canada-housing-predictor/
 
 ### Steps
 
+1. Clone the repository
 ```bash
-# 1. Clone the repository
 git clone https://github.com/<your-username>/canada-housing-predictor.git
 cd canada-housing-predictor
 ```
-
+2. Create and activate a virtual environment
 ```bash
-# 2. Create and activate a virtual environment
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
 # venv\Scripts\activate         # Windows
