@@ -45,26 +45,26 @@ Enter an address in British Columbia, fill in property details, and get an insta
 
 ```
 User enters address & property details
-          │
-          ▼
-  Geoapify API geocodes the address
-  (validates: Canada → British Columbia)
-          │
-          ▼
-  Features are assembled into a DataFrame
-  (one-hot encoding, missing indicators, etc.)
-          │
-          ▼
-  GradientBoostingRegressor predicts log(price)
-          │
-          ▼
-  exp(prediction) → estimated price in $CAD
-          │
-          ▼
-  MAPE for the price range → min/max estimates
-          │
-          ▼
-  Results displayed with low/high estimates
+                │
+                ▼
+Geoapify API geocodes the address
+(validates: Canada → British Columbia)
+                │
+                ▼
+Features are assembled into a DataFrame
+(one-hot encoding, missing indicators, etc.)
+                │
+                ▼
+GradientBoostingRegressor predicts log(price)
+                │
+                ▼
+exp(prediction) → estimated price in $CAD
+                │
+                ▼
+MAPE for the price range → min/max estimates
+                │
+                ▼
+Results displayed with low/high estimates
 ```
 
 
