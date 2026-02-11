@@ -4,7 +4,6 @@ import pandas as pd
 import base64
 from joblib import load
 from pathlib import Path
-from geopy.geocoders import Nominatim
 import requests
 
 
@@ -227,13 +226,13 @@ def geocode_geoapify(address):
         return None, None, None, None
         
     except requests.exceptions.Timeout:
-        st.error("⏱️ Request timeout. Please try again.")
+        st.error("Request timeout. Please try again.")
         return None, None, None, None
     except requests.exceptions.RequestException as e:
-        st.error(f"🌐 Connection error. Please check your internet connection.")
+        st.error(f"Connection error. Please check your internet connection.")
         return None, None, None, None
     except Exception as e:
-        st.error(f"❌ Unexpected error: {str(e)}")
+        st.error(f"Unexpected error: {str(e)}")
         return None, None, None, None
 
 
