@@ -137,9 +137,9 @@ The model is most accurate for mid-range properties. I use these error rates to 
 
 ## 📄 Dataset
 
-- **Source:** [Canada Housing Dataset on Kaggle](https://www.kaggle.com/datasets/yuliiabulana/canada-housing) (likely scraped from Zillow or a similar platform)
-- **Region:** British Columbia, Canada only
-- **Why this dataset?** It is one of the most complete publicly available real estate datasets — far more realistic than datasets like California Housing or French government open data.
+- **Source:** [Canada Housing Dataset on Kaggle](https://www.kaggle.com/datasets/yuliiabulana/canada-housing)
+- **Region:** British Columbia, Canada.
+- **Why this dataset?** It is one of the most complete publicly available real estate datasets, far more realistic than datasets like California Housing or French government open data.
 
 ### Data Engineering
 
