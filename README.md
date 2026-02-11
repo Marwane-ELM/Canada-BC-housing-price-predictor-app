@@ -27,7 +27,6 @@ Anyone curious about property values in British Columbia or anyone exploring the
 
 - [Live Demo](#-live-demo)
 - [Features](#-features)
-- [How It Works](#-how-it-works)
 - [Machine Learning Pipeline](#-machine-learning-pipeline)
 - [Dataset](#-dataset)
 - [Tech Stack](#-tech-stack)
@@ -56,10 +55,6 @@ Enter an address in British Columbia, fill in property details, and get an insta
 - **Min/Max range** — based on the model's error rate (MAPE) for your price segment, you get a low and high estimate.
 - **Mobile friendly** — the UI adapts to smaller screens.
 
----
-
-## ⚙️ How It Works
-
 ```
 User enters address & property details
           │
@@ -75,11 +70,10 @@ User enters address & property details
   GradientBoostingRegressor predicts log(price)
           │
           ▼
-  exp(prediction) → estimated price in CAD
+  exp(prediction) → estimated price in $CAD
           │
           ▼
-  MAPE-based confidence range is computed
-  per price segment
+  MAPE for the price range → min/max estimates
           │
           ▼
   Results displayed with low/high estimates
