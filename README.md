@@ -43,18 +43,6 @@ Anyone curious about property values in British Columbia or anyone exploring the
 The app is fully responsive and optimized for both **desktop** and **mobile** devices.  
 Enter an address in British Columbia, fill in property details, and get an instant AI estimate.
 
----
-
-## ✨ Features
-
-- **Address geocoding** : uses the Geoapify API to convert your address into coordinates. Only BC addresses are accepted.
-- **Map display** : shows a pin on the map so you can confirm the location.
-- **Property form** : property type, square footage, acreage, beds, baths, heating, parking, tax…
-- **"I don't know" options** : if you don't know the acreage or the tax amount, you can skip it. The model handles missing values with indicator features.
-- **Price prediction** : a Gradient Boosting model gives you an estimated price.
-- **Min/Max range** : based on the model's error rate (MAPE) for your price segment, you get a low and high estimate.
-- **Mobile friendly** : the UI adapts to smaller screens.
-
 ```
 User enters address & property details
           │
@@ -78,6 +66,19 @@ User enters address & property details
           ▼
   Results displayed with low/high estimates
 ```
+
+
+---
+
+## ✨ Features
+
+- **Address geocoding** : uses the Geoapify API to convert your address into coordinates. Only BC addresses are accepted.
+- **Map display** : shows a pin on the map so you can confirm the location.
+- **Property form** : property type, square footage, acreage, beds, baths, heating, parking, tax…
+- **"I don't know" options** : if you don't know the acreage or the tax amount, you can skip it. The model handles missing values with indicator features.
+- **Price prediction** : a Gradient Boosting model gives you an estimated price.
+- **Min/Max range** : based on the model's error rate (MAPE) for your price segment, you get a low and high estimate.
+- **Mobile friendly** : the UI adapts to smaller screens.
 
 ---
 
