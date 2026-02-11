@@ -4,7 +4,7 @@
   # 🍁 [**EstimAI**](https://estimai-british-columbia.streamlit.app/) — AI-Powered Property Price Estimator
 
   **Estimate any property's market value in British Columbia, Canada, powered by Machine Learning.**  
-  [**👉 Try the Live App**](https://estimai-british-columbia.streamlit.app/)
+  👉 [**Try the Live App**](https://estimai-british-columbia.streamlit.app/)
 
 </div>
 
