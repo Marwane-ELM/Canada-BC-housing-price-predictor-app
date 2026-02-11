@@ -9,22 +9,6 @@
 </div>
 
 ---
-
-## 📖 Table of Contents
-
-- [About the Project](#-about-the-project)
-- [Live Demo](#-live-demo)
-- [Features](#-features)
-- [How It Works](#-how-it-works)
-- [Machine Learning Pipeline](#-machine-learning-pipeline)
-- [Dataset](#-dataset)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Installation & Local Usage](#-installation--local-usage)
-- [Disclaimer](#%EF%B8%8F-disclaimer)
-
----
-
 ## 🎯 About the Project
 
 **EstimAI** is a Machine Learning web application that estimates residential property prices in **British Columbia, Canada**. Users enter an address and describe their property's characteristics. The app returns a price estimate with a confidence range.
@@ -36,6 +20,20 @@ I've built this project to combine two personal interests: **Artificial Intellig
 ### Who Is It For?
 
 Anyone curious about property values in British Columbia or anyone exploring the BC real estate market.
+
+---
+
+## 📖 Table of Contents
+
+- [Live Demo](#-live-demo)
+- [Features](#-features)
+- [How It Works](#-how-it-works)
+- [Machine Learning Pipeline](#-machine-learning-pipeline)
+- [Dataset](#-dataset)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation & Local Usage](#-installation--local-usage)
+- [Disclaimer](#%EF%B8%8F-disclaimer)
 
 ---
 
