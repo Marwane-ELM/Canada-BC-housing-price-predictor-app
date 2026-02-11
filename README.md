@@ -32,7 +32,7 @@ Anyone curious about property values in British Columbia or anyone exploring the
 - [Technologies used](#-technologies-used)
 - [Project Structure](#-project-structure)
 - [Installation & Local Usage](#-installation--local-usage)
-- [Disclaimer](#%EF%B8%8F-disclaimer)
+- [Disclaimer](#-disclaimer)
 
 ---
 
