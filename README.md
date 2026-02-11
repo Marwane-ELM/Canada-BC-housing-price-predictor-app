@@ -142,13 +142,15 @@ I use these error rates to calculate the min/max price range shown in the app.
 
 ### Data Engineering
 
-| Stage | Details |
-|---|---|
-| **Raw data** | ~35,000 rows, 100+ columns (many empty or irrelevant) |
-| **After cleaning** | **22,157 rows, 38 columns** |
-| **Cleaning steps** | Removed properties with impossible values (example : 0 bedrooms for million-dollar homes), dropped columns with >70% missing values, standardized categorical labels |
-| **Feature engineering** | Created binary indicator columns for missing values (acreage, tax, parking, heating), one-hot encoded categorical features (property type, heating distribution, energy source) |
-| **Target encoding** | Log-transformation: ln(1 + Price) applied before `train_test_split` |
+The raw dataset had **~35,000 rows** and **100+ columns**, most of which were empty or useless.
+
+After cleaning, I ended up with **22,157 rows and 38 columns**. Here's what I did:
+- Removed rows with clearly wrong values (e.g. houses with 0 bedrooms listed at millions of dollars)
+- Dropped columns that had too many missing values (>70%)
+- Created binary columns to indicate when a value was missing (for acreage, tax, parking, heating)
+- One-hot encoded categorical columns (property type, heating system, energy source)
+- Applied `log(1 + Price)` on the target before splitting into train/test
+
 
 ---
 
