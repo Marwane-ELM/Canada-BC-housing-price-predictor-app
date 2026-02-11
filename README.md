@@ -29,7 +29,7 @@ Anyone curious about property values in British Columbia or anyone exploring the
 - [Features](#-features)
 - [Machine Learning Pipeline](#-machine-learning-pipeline)
 - [Dataset](#-dataset)
-- [Tech Stack](#-tech-stack)
+- [Technologies used](#-technologies-used)
 - [Project Structure](#-project-structure)
 - [Installation & Local Usage](#-installation--local-usage)
 - [Disclaimer](#%EF%B8%8F-disclaimer)
@@ -146,13 +146,13 @@ I use these error rates to calculate the min/max price range shown in the app.
 |---|---|
 | **Raw data** | ~35,000 rows, 100+ columns (many empty or irrelevant) |
 | **After cleaning** | **22,157 rows, 38 columns** |
-| **Cleaning steps** | Removed listings with impossible values (e.g., 0 bedrooms for million-dollar homes), dropped columns with >70% missing values, standardized categorical labels |
+| **Cleaning steps** | Removed properties with impossible values (example : 0 bedrooms for million-dollar homes), dropped columns with >70% missing values, standardized categorical labels |
 | **Feature engineering** | Created binary indicator columns for missing values (acreage, tax, parking, heating), one-hot encoded categorical features (property type, heating distribution, energy source) |
 | **Target encoding** | Log-transformation: ln(1 + Price) applied before `train_test_split` |
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology used
 
 | Layer | Technology |
 |---|---|
