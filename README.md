@@ -103,7 +103,7 @@ The target variable (`Price`) was **log-transformed** before training:
 
 $$Y = \ln(1 + \text{Price})$$
 
-The idea is simple: without this, the model mostly tries to reduce errors on expensive properties (because the absolute errors are bigger). With the log, a 50k$ mistake on a 200k$ house counts more than the same mistake on a 5M$ house. This way the model is fairer across all price ranges.
+Without this, the model tries to reduce errors on expensive properties (because the absolute errors are bigger). With the log, a 50k$ mistake on a 200k$ house counts more than the same mistake on a 5M$ house. This way the model is fairer across all price ranges.
 
 ### Final Model Performance
 
@@ -124,7 +124,7 @@ The gap between train and test scores indicates a slight overfitting, which is a
 The model's accuracy was evaluated across five price segments to ensure fair performance at all price levels:
 
 | Price Range (CAD) | MAPE |
-|---|---|
+|---|---|Technologies utiliséesTechnologies utilisées
 | \$64,900 – \$638,000 | 16.8% |
 | \$638,000 – \$889,000 | 9.9% |
 | \$889,000 – \$1,327,400 | 11.5% |
