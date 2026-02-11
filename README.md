@@ -220,20 +220,27 @@ canada-housing-predictor/
 # 1. Clone the repository
 git clone https://github.com/<your-username>/canada-housing-predictor.git
 cd canada-housing-predictor
+```
 
+```bash
 # 2. Create and activate a virtual environment
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
 # venv\Scripts\activate         # Windows
+```
 
+```bash
 # 3. Install dependencies
 pip install -r requirements.txt
-
+```
+```bash
 # 4. Set up your API key
 #    Create a file: .streamlit/secrets.toml
 mkdir -p .streamlit
 echo 'GEOAPIFY_API_KEY = "your_api_key_here"' > .streamlit/secrets.toml
+```
 
+```bash
 # 5. Run the app
 streamlit run app/streamlit_app.py
 ```
