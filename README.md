@@ -106,8 +106,7 @@ The idea is simple: without this, the model mostly tries to reduce errors on exp
 
 ### Final Model Performance
 
-<details>
-Here are the detailed metrics (Train set vs. Test set )
+Here are the detailed metrics of the final model (Train set vs. Test set )
 
 | Metric | Test Set | Train Set |
 |--------|----------|-----------|
@@ -117,31 +116,29 @@ Here are the detailed metrics (Train set vs. Test set )
 | MAPE | 14.3% | 10.1% |
 | RMSLE | 0.208 | 0.144 |
 
-The gap between train and test scores indicates mild overfitting, which is acceptable given the dataset size and feature complexity.
+The gap between train and test scores indicates a slight overfitting, which is acceptable given the dataset size and feature complexity.
 
-</details>
-
-### MAPE by Price Range
+### Mean Average Percentage Error (MAPE) by Price Range
 
 The model's accuracy was evaluated across five price segments to ensure fair performance at all price levels:
 
 | Price Range (CAD) | MAPE |
 |---|---|
 | \$64,900 – \$638,000 | 16.8% |
-| \$638,000 – \$889,000 | **9.9%** |
+| \$638,000 – \$889,000 | 9.9% |
 | \$889,000 – \$1,327,400 | 11.5% |
 | \$1,327,400 – \$2,043,133 | 14.7% |
 | \$2,043,133 – \$28,888,000 | 18.7% |
 
-These per-segment MAPE values are used at inference time to provide the **low/high confidence range** displayed in the app.
-
+The model is most accurate for mid-range properties.
+I use these error rates to calculate the min/max price range shown in the app.
 ---
 
-## 📦 Dataset
+## 📄 Dataset
 
 - **Source:** [Canada Housing Dataset on Kaggle](https://www.kaggle.com/datasets/yuliiabulana/canada-housing) (likely scraped from Zillow or a similar platform)
 - **Region:** British Columbia, Canada only
-- **Why this dataset?** It is one of the most complete publicly available real estate datasets — far more realistic than toy datasets like California Housing or French government open data.
+- **Why this dataset?** It is one of the most complete publicly available real estate datasets — far more realistic than datasets like California Housing or French government open data.
 
 ### Data Engineering
 
