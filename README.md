@@ -3,8 +3,8 @@
 
   # 🍁 [**EstimAI**](https://estimai-british-columbia.streamlit.app/) — AI-Powered Property Price Estimator
 
-  **Estimate any property's market value in British Columbia, Canada, powered by Machine Learning.**
-  [**🚀 Try the Live App →**](https://estimai-british-columbia.streamlit.app/)
+  **Estimate any property's market value in British Columbia, Canada, powered by Machine Learning.**  
+  👉 [**Try the Live App**](https://estimai-british-columbia.streamlit.app/)
 
 </div>
 
@@ -19,7 +19,7 @@ I've built this project to combine two personal interests: **Artificial Intellig
 
 ### Who Is It For?
 
-Anyone curious about property values in British Columbia or anyone exploring the BC real estate market.
+For anyone curious about property values in British Columbia or anyone exploring the BC real estate market.
 
 ---
 
@@ -32,7 +32,7 @@ Anyone curious about property values in British Columbia or anyone exploring the
 - [Technologies used](#-technologies-used)
 - [Project Structure](#-project-structure)
 - [Installation & Local Usage](#-installation--local-usage)
-- [Disclaimer](#%EF%B8%8F-disclaimer)
+- [Disclaimer](#-disclaimer)
 
 ---
 
@@ -103,7 +103,7 @@ The target variable (`Price`) was **log-transformed** before training:
 
 $$Y = \ln(1 + \text{Price})$$
 
-The idea is simple: without this, the model mostly tries to reduce errors on expensive properties (because the absolute errors are bigger). With the log, a 50k$ mistake on a 200k$ house counts more than the same mistake on a 5M$ house. This way the model is fairer across all price ranges.
+Without this, the model tries to reduce errors on expensive properties (because the absolute errors are bigger). With the log, a 50k$ mistake on a 200k$ house counts more than the same mistake on a 5M$ house. This way the model is fairer across all price ranges.
 
 ### Final Model Performance
 
@@ -137,9 +137,9 @@ The model is most accurate for mid-range properties. I use these error rates to 
 
 ## 📄 Dataset
 
-- **Source:** [Canada Housing Dataset on Kaggle](https://www.kaggle.com/datasets/yuliiabulana/canada-housing) (likely scraped from Zillow or a similar platform)
-- **Region:** British Columbia, Canada only
-- **Why this dataset?** It is one of the most complete publicly available real estate datasets — far more realistic than datasets like California Housing or French government open data.
+- **Source:** [Canada Housing Dataset on Kaggle](https://www.kaggle.com/datasets/yuliiabulana/canada-housing)
+- **Region:** British Columbia, Canada.
+- **Why this dataset?** It is one of the most complete publicly available real estate datasets, far more realistic than datasets like California Housing or French government open data.
 
 ### Data Engineering
 
@@ -170,7 +170,8 @@ After cleaning, I ended up with **22,157 rows and 38 columns**. Here's what I di
 
 ---
 
-## 🗂️ Project Structure
+## 🗂️ Project Structure 
+
 
 ```
 canada-housing-predictor/
@@ -178,31 +179,25 @@ canada-housing-predictor/
 ├── app/                              # Streamlit web application
 │   ├── streamlit_app.py              # Main app source code
 │   ├── estimlogo.png                 # EstimAI logo
-│   └── sunny.jpg                     # Hero banner image
+│   └── sunny.jpg                     # banner image
 │
 ├── artifacts/                        # Trained models & search results
-│   ├── gdb_final_model.pkl           # ✅ Production model (GradientBoosting)
+│   ├── gdb_final_model.pkl           # Production model (GradientBoosting)
 │   ├── gdb_mape_dict.pkl             # MAPE per price range (for confidence intervals)
-│   ├── gdb_search.pkl / 2 / 3       # Bayesian search results for GradientBoosting
 │   ├── ada_best_model.pkl            # Best AdaBoost model
-│   ├── ada_search.pkl / 2 / 3       # AdaBoost search iterations
-│   ├── rdf_best_model.pkl            # Best Random Forest model
-│   ├── rdf_search.pkl / 2 / 3       # Random Forest search iterations
-│   ├── grid_linear.pkl              # Linear regression grid search
-│   ├── grid_dtree.pkl               # Decision tree grid search
-│   └── grid_trees.pkl               # Tree-based grid search
+│   └──  rdf_best_model.pkl            # Best Random Forest model
 │
 ├── data/                             # Data pipeline
-│   ├── canada/                       # Raw source data
-│   ├── processed/                    # Cleaned & feature-engineered data
+│   ├── canada/                       # Raw source data (Hidden in Github)
+│   ├── processed/                    # Cleaned & feature-engineered data (Hidden in Github)
 │   ├── raw_data_cleaning.ipynb       # Data cleaning notebook
-│   └── data_analysis.ipynb           # EDA & analysis notebook
+│   └── data_analysis.ipynb           # Exploration of the dataset
 │
 ├── notebooks/                        # Model training & experimentation
 │   ├── Linear_reg.ipynb              # Ridge, Lasso, ElasticNet
 │   ├── Random_Forest.ipynb           # Random Forest experiments
 │   ├── AdaBoostRegressor.ipynb       # AdaBoost experiments
-│   ├── GradientBoostRegressor.ipynb  # ✅ Final model training
+│   ├── GradientBoostRegressor.ipynb  # Final model training
 │   └── models_analysis.ipynb         # Cross-model comparison
 │
 ├── requirements.txt                  # Python dependencies
@@ -218,44 +213,51 @@ canada-housing-predictor/
 ### Prerequisites
 
 - Python 3.10+
-- A [Geoapify API key](https://www.geoapify.com/) (free tier available)
+- A [Geoapify API key](https://www.geoapify.com/) (Available for free)
 
 ### Steps
 
+1. Clone the repository
 ```bash
-# 1. Clone the repository
 git clone https://github.com/<your-username>/canada-housing-predictor.git
 cd canada-housing-predictor
-
-# 2. Create and activate a virtual environment
+```
+2. Create and activate a virtual environment
+```bash
 python -m venv venv
 source venv/bin/activate        # Linux/Mac
-# venv\Scripts\activate         # Windows
+venv\Scripts\activate         # Windows
+```
 
-# 3. Install dependencies
+3. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-# 4. Set up your API key
+4. Set up your API key
+```bash
 #    Create a file: .streamlit/secrets.toml
 mkdir -p .streamlit
 echo 'GEOAPIFY_API_KEY = "your_api_key_here"' > .streamlit/secrets.toml
+```
 
-# 5. Run the app
+5. Run the app
+```bash
 streamlit run app/streamlit_app.py
 ```
 
-The app will open in your browser at `http://localhost:8501`.
+Then the app will open in your browser.
 
 ---
 
 ## ⚠️ Disclaimer
 
-> This tool provides **AI-generated estimates for informational purposes only**. It is **not** a professional appraisal. Actual property values may vary significantly based on market conditions, property condition, and other factors not captured in the model. Always consult a licensed real estate professional for accurate property valuations.
+> This tool provides **AI-generated estimates for informational purposes only**. It is **not** a professional appraisal. Actual property values may vary based on market conditions, property condition, and other factors not captured in the model. Always consult a licensed real estate professional for accurate property valuations.
 
 ---
-
 <div align="center">
-
-**Built with ❤️ and 🍁 by Marwane**
+  
+**Built with ❤️ by Marwane ELM 🍁**
 
 </div>
+
