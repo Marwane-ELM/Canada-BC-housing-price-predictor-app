@@ -124,7 +124,7 @@ The gap between train and test scores indicates a slight overfitting, which is a
 The model's accuracy was evaluated across five price segments to ensure fair performance at all price levels:
 
 | Price Range (CAD) | MAPE |
-|---|---|Technologies utiliséesTechnologies utilisées
+|---|---|
 | \$64,900 – \$638,000 | 16.8% |
 | \$638,000 – \$889,000 | 9.9% |
 | \$889,000 – \$1,327,400 | 11.5% |
