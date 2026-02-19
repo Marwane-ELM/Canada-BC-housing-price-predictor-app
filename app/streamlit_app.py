@@ -383,6 +383,9 @@ missing_energy = 0
 energy_types = []
 
 
+answer4 = "No"
+answer5 = "No"
+
 answer3 = st.radio(
     "Do you have one or more Heating Distribution System ?",
     horizontal=True,
