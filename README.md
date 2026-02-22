@@ -219,8 +219,8 @@ canada-housing-predictor/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/canada-housing-predictor.git
-cd canada-housing-predictor
+git clone https://github.com/Marwane-ELM/EstimAI-property-price-estimator.git
+cd EstimAI-property-price-estimator
 ```
 2. Create and activate a virtual environment
 ```bash
