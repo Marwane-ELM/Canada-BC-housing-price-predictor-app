@@ -43,6 +43,9 @@ For anyone curious about property values in British Columbia or anyone exploring
 The app is fully responsive and optimized for both **desktop** and **mobile** devices.  
 Enter an address in British Columbia, fill in property details, and get an instant AI estimate.
 
+<img src="app/app-state-zzzz.png" alt="Sleeping-mode" width="700"/>
+
+
 ```
 User enters address & property details
                 │
