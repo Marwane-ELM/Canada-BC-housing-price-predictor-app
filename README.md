@@ -1,7 +1,7 @@
 <div align="center">
   <img src="app/estimlogo.png" alt="EstimAI Logo" width="200"/>
 
-  # 🍁 [**EstimAI**](https://estimai-british-columbia.streamlit.app/) — AI-Powered Property Price Estimator
+  #  [**EstimAI**](https://estimai-british-columbia.streamlit.app/) — AI-Powered Property Price Estimator
 
   **Estimate any property's market value in British Columbia, Canada, powered by Machine Learning.**  
   👉 [**Try the Live App**](https://estimai-british-columbia.streamlit.app/)
@@ -42,6 +42,11 @@ For anyone curious about property values in British Columbia or anyone exploring
 
 The app is fully responsive and optimized for both **desktop** and **mobile** devices.  
 Enter an address in British Columbia, fill in property details, and get an instant AI estimate.
+
+⚠️ **Note** : If you have this on your **screen**, **click** on the **blue button** to **launch** the web app.
+
+<img src="app/app-state-zzzz.png" alt="Sleeping-mode" width="700"/>
+
 
 ```
 User enters address & property details
@@ -219,8 +224,8 @@ canada-housing-predictor/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/canada-housing-predictor.git
-cd canada-housing-predictor
+git clone https://github.com/Marwane-ELM/EstimAI-property-price-estimator.git
+cd EstimAI-property-price-estimator
 ```
 2. Create and activate a virtual environment
 ```bash

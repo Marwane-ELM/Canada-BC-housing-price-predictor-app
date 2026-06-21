@@ -383,6 +383,9 @@ missing_energy = 0
 energy_types = []
 
 
+answer4 = "No"
+answer5 = "No"
+
 answer3 = st.radio(
     "Do you have one or more Heating Distribution System ?",
     horizontal=True,
@@ -502,16 +505,16 @@ st.session_state.unfilled = []
 
 if get_pred:
     with result_placeholder.container(): 
-        if (not address) & ("Location" not in st.session_state.unfilled):
+        if (not address) and ("Location" not in st.session_state.unfilled):
             st.session_state.unfilled.append("Location")
     
-        if (st.session_state.property_type == None) & ("Property type" not in st.session_state.unfilled):
+        if (st.session_state.property_type == None) and ("Property type" not in st.session_state.unfilled):
             st.session_state.unfilled.append("Property type")
             
-        if (answer4 == "Yes") & (len(heating_distrib) == 0) & ("Heating Distribution System" not in st.session_state.unfilled):
+        if (answer4 == "Yes") and (len(heating_distrib) == 0) and ("Heating Distribution System" not in st.session_state.unfilled):
             st.session_state.unfilled.append("Heating Distribution System")
     
-        if (answer5 == "Yes") & (len(energy_types) == 0) & ("Energy source" not in st.session_state.unfilled):
+        if (answer5 == "Yes") and (len(energy_types) == 0) and ("Energy source" not in st.session_state.unfilled):
             st.session_state.unfilled.append("Energy source")
     
         
